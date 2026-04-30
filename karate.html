@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cracow Kyokushin Karate</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(190, 0, 0, 0.08), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, #f5f5f3 100%);
+      color: #0b0b0b;
+      min-height: 100vh;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .page {
+      max-width: 1480px;
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      margin: 18px;
+      padding: 14px 18px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(26px);
+      -webkit-backdrop-filter: blur(26px);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: 0 20px 70px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      border-radius: 14px;
+    }
+
+    .brand-text {
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 1;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 5px;
+      margin-top: 5px;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      background: rgba(245,245,245,0.8);
+      border-radius: 999px;
+      padding: 6px;
+    }
+
+    nav button {
+      border: 0;
+      background: transparent;
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      cursor: pointer;
+      color: #222;
+    }
+
+    nav button.active {
+      background: #0d0d0d;
+      color: white;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .lang {
+      border: 0;
+      background: rgba(0,0,0,0.06);
+      padding: 11px 14px;
+      border-radius: 999px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .red-btn {
+      border: 0;
+      background: #c40000;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 14px 30px rgba(196,0,0,0.22);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    main {
+      padding: 18px;
+    }
+
+    .screen {
+      display: none;
+      animation: fade 0.28s ease;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .glass {
+      background: rgba(255,255,255,0.66);
+      backdrop-filter: blur(26px);
+      -webkit-backdrop-filter: blur(26px);
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.08);
+      border-radius: 42px;
+    }
+
+    .hero {
+      min-height: calc(100vh - 120px);
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 28px;
+      align-items: center;
+      padding: 54px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .eyebrow {
+      color: #c40000;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 116px);
+      line-height: 0.88;
+      letter-spacing: -6px;
+      margin-bottom: 24px;
+    }
+
+    .line {
+      width: 72px;
+      height: 4px;
+      background: #c40000;
+      border-radius: 4px;
+      margin: 22px 0;
+    }
+
+    .hero p {
+      color: #555;
+      font-size: 18px;
+      max-width: 520px;
+    }
+
+    .hero-buttons {
+      margin-top: 28px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .soft-btn {
+      border: 1px solid rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.75);
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 900;
+    }
+
+    .hero-image {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-image img {
+      height: 640px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 36px;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.14);
+    }
+
+    .section-head {
+      text-align: center;
+      padding: 42px 20px 28px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(42px, 7vw, 86px);
+      line-height: 0.92;
+      letter-spacing: -4px;
+      margin-bottom: 14px;
+    }
+
+    .section-head p {
+      color: #666;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      padding: 24px;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.74);
+      border: 1px solid rgba(255,255,255,0.9);
+      box-shadow: 0 16px 55px rgba(0,0,0,0.07);
+    }
+
+    .tag {
+      color: #c40000;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 9px;
+    }
+
+    .card h3 {
+      font-size: 26px;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .photo-card img {
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+      border-radius: 30px;
+    }
+
+    .training-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .schedule {
+      padding: 24px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      border-radius: 22px;
+    }
+
+    th {
+      background: #0d0d0d;
+      color: white;
+      padding: 16px;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    td {
+      background: rgba(255,255,255,0.78);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 17px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    td strong {
+      display: block;
+      color: #c40000;
+      margin-bottom: 4px;
+    }
+
+    .news-feature {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 24px;
+      padding: 22px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .news-feature img {
+      height: 390px;
+      object-fit: cover;
+      border-radius: 28px;
+    }
+
+    .news-feature h2 {
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 0.98;
+      letter-spacing: -3px;
+      margin-bottom: 16px;
+    }
+
+    .news-feature p {
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .news-card {
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .news-card img {
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .news-card-content {
+      padding: 22px;
+    }
+
+    .news-card h3 {
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .gallery-grid img {
+      height: 390px;
+      object-fit: cover;
+      border-radius: 30px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.1);
+    }
+
+    .video-card {
+      margin-top: 18px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 220px 1fr auto;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .video-thumb {
+      height: 125px;
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .video-thumb img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .play {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(0,0,0,0.18);
+      color: white;
+      font-size: 34px;
+    }
+
+    .video-card h3 {
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .video-card p {
+      color: #666;
+      margin-top: 8px;
+    }
+
+    footer {
+      margin: 18px;
+      padding: 36px;
+      border-radius: 36px;
+      background: #0d0d0d;
+      color: white;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    footer p, footer a {
+      color: rgba(255,255,255,0.68);
+      display: block;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1000px) {
+      .hero,
+      .training-layout,
+      .news-feature {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image img {
+        height: 520px;
+      }
+
+      .grid-4,
+      .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      footer {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      header {
+        margin: 10px;
+        padding: 12px;
+        border-radius: 24px;
+        flex-wrap: wrap;
+      }
+
+      .brand img {
+        width: 44px;
+        height: 44px;
+      }
+
+      .brand-text {
+        font-size: 14px;
+      }
+
+      .brand-text span {
+        font-size: 8px;
+        letter-spacing: 3px;
+      }
+
+      nav {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      nav button {
+        flex: 1;
+        padding: 10px 8px;
+        font-size: 12px;
+      }
+
+      .actions {
+        margin-left: auto;
+      }
+
+      .red-btn {
+        padding: 11px 14px;
+        font-size: 12px;
+      }
+
+      main {
+        padding: 10px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 34px 22px;
+        border-radius: 32px;
+      }
+
+      .hero::after {
+        font-size: 90px;
+        right: 12px;
+        top: 20px;
+      }
+
+      h1 {
+        font-size: 50px;
+        letter-spacing: -2px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .hero-image img {
+        height: 380px;
+        border-radius: 28px;
+      }
+
+      .section-head {
+        padding: 34px 10px 20px;
+      }
+
+      .section-head h2 {
+        letter-spacing: -2px;
+      }
+
+      .grid-4,
+      .news-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid img {
+        height: 420px;
+      }
+
+      .video-card {
+        grid-template-columns: 1fr;
+      }
+
+      .video-thumb {
+        height: 190px;
+      }
+
+      footer {
+        margin: 10px;
+        padding: 28px;
+      }
+    }/* ===== GALLERY FIX ===== */
+
+.gallery-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 45px 28px 70px;
+}
+
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 48px;
+}
+
+.gallery-header h1 {
+  font-size: 64px;
+  line-height: 0.9;
+  letter-spacing: -3px;
+  margin-bottom: 14px;
+}
+
+.gallery-header p {
+  color: #666;
+  font-size: 16px;
+}
+
+.insta-link {
+  color: #c40000;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.gallery-block {
+  margin-bottom: 46px;
+  padding-bottom: 34px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.gallery-block-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.gallery-block-head h3 {
+  font-size: 22px;
+}
+
+.gallery-block-head a {
+  color: #c40000;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+.gallery-grid img {
+  height: 135px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.gallery-grid span {
+  display: block;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #666;
+}
+
+@media (max-width: 900px) {
+  .gallery-header {
+    display: block;
+  }
+
+  .gallery-header h1 {
+    font-size: 48px;
+  }
+
+  .insta-link {
+    display: inline-block;
+    margin-top: 16px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-grid img {
+    height: 170px;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header>
+      <a class="brand" onclick="showPage('home')">
+        <img src="images/logo.jpg" alt="Cracow Kyokushin Karate logo">
+        <div class="brand-text">
+          CRACOW KYOKUSHIN
+          <span>KARATE</span>
+        </div>
+      </a>
+
+      <nav>
+        <button class="nav-btn active" onclick="showPage('home')" data-page="home">HOME</button>
+        <button class="nav-btn" onclick="showPage('training')" data-page="training">TRAINING</button>
+        <button class="nav-btn" onclick="showPage('news')" data-page="news">NEWS</button>
+        <button class="nav-btn" onclick="showPage('gallery')" data-page="gallery">GALLERY</button>
+      </nav>
+
+      <div class="actions">
+        <button class="lang" onclick="toggleLang()">PL</button>
+        <a class="red-btn" href="mailto:sekretariat@kyokushin.org.pl">SIGN UP</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- HOME -->
+      <section id="home" class="screen active">
+        <div class="hero glass">
+          <div>
+            <div class="eyebrow" data-en="Kraków · Poland" data-pl="Kraków · Polska">Kraków · Poland</div>
+            <h1 data-en="CRACOW KYOKUSHIN KARATE" data-pl="KRAKOWSKI KYOKUSHIN KARATE">CRACOW KYOKUSHIN KARATE</h1>
+            <div class="line"></div>
+            <p data-en="Strength. Discipline. Spirit. Traditional Kyokushin Karate training in the heart of Kraków."
+               data-pl="Siła. Dyscyplina. Duch. Tradycyjne treningi Karate Kyokushin w sercu Krakowa.">
+              Strength. Discipline. Spirit. Traditional Kyokushin Karate training in the heart of Kraków.
+            </p>
+
+            <div class="hero-buttons">
+              <button class="red-btn" onclick="showPage('training')" data-en="See Schedule" data-pl="Zobacz grafik">See Schedule</button>
+              <button class="soft-btn" onclick="showPage('news')" data-en="News" data-pl="Aktualności">News</button>
+            </div>
+          </div>
+
+          <div class="hero-image">
+            <img src="images/k1.jpg" alt="Kyokushin Karate training">
+          </div>
+        </div>
+
+        <div class="section-head">
+          <h2 data-en="The Kyokushin Way" data-pl="Droga Kyokushin">The Kyokushin Way</h2>
+          <p data-en="A clean body, focused mind, strong spirit, and respect for the dojo."
+             data-pl="Silne ciało, skupiony umysł, mocny duch i szacunek do dojo.">
+            A clean body, focused mind, strong spirit, and respect for the dojo.
+          </p>
+        </div>
+
+        <div class="grid-4">
+          <div class="card">
+            <div class="tag">01</div>
+            <h3 data-en="Respect" data-pl="Szacunek">Respect</h3>
+            <p data-en="Respect yourself, others, and the dojo." data-pl="Szacunek do siebie, innych i dojo.">Respect yourself, others, and the dojo.</p>
+          </div>
+
+          <div class="card">
+            <div class="tag">02</div>
+            <h3 data-en="Discipline" data-pl="Dyscyplina">Discipline</h3>
+            <p data-en="Train regularly and build character." data-pl="Trenuj regularnie i buduj charakter.">Train regularly and build character.</p>
+          </div>
+
+          <div class="card">
+            <div class="tag">03</div>
+            <h3 data-en="Strength" data-pl="Siła">Strength</h3>
+            <p data-en="Develop body, focus, and fighting spirit." data-pl="Rozwijaj ciało, koncentrację i ducha walki.">Develop body, focus, and fighting spirit.</p>
+          </div>
+
+          <div class="card">
+            <div class="tag">04</div>
+            <h3 data-en="Community" data-pl="Społeczność">Community</h3>
+            <p data-en="Train together and grow together." data-pl="Trenujcie razem i rozwijajcie się razem.">Train together and grow together.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRAINING -->
+      <section id="training" class="screen">
+  <div class="section-head">
+    <h2 data-en="Training Schedule" data-pl="Rozkład zajęć">Training Schedule</h2>
+    <p data-en="Groups at two Kraków locations: ul. Smoleńsk 5/7 and ul. Krowoderska 8."
+       data-pl="Grupy w dwóch lokalizacjach w Krakowie: ul. Smoleńsk 5/7 oraz ul. Krowoderska 8.">
+      Groups at two Kraków locations: ul. Smoleńsk 5/7 and ul. Krowoderska 8.
+    </p>
+  </div>
+
+  <div class="training-layout smaller-layout">
+    <div class="card location-card">
+      <div class="tag" data-en="Locations" data-pl="Lokalizacje">Locations</div>
+<br>
+<br>
+      <h3>1. ul. Smoleńsk 5/7</h3>
+      <p data-en="Primary School No. 4, beside Kraków Philharmonic."
+         data-pl="Szkoła Podstawowa nr 4, obok Filharmonii Krakowskiej.">
+        Primary School No. 4, beside Kraków Philharmonic.
+      </p>
+<br>
+<br>
+<br>
+      <h3 style="margin-top:18px;">2. ul. Krowoderska 8</h3>
+      <p data-en="YMCA Kraków training location."
+         data-pl="Lokalizacja treningowa YMCA Kraków.">
+        YMCA Kraków training location.
+      </p>
+
+      <p><strong>Tel:</strong> 12 634 08 49</p>
+      <p><strong>Mobile:</strong> 607 607 535</p>
+      <p><strong>Email:</strong> sekretariat@kyokushin.org.pl</p>
+    </div>
+
+    <div class="photo-card smaller-photo">
+      <img src="images/k2.jpg" alt="Kyokushin training">
+    </div>
+  </div>
+
+        <div class="grid-4">
+          <div class="card">
+            <div class="tag" data-en="Beginners" data-pl="Początkujący">Beginners</div>
+            <h3>K1</h3>
+            <p><strong data-en="Children 8–13" data-pl="Dzieci 8–13 lat">Children 8–13</strong></p>
+            <p data-en="Wed 17:00–18:00" data-pl="Śr. 17:00–18:00">Wed 17:00–18:00</p>
+            <p data-en="Fri 17:00–18:00" data-pl="Pt. 17:00–18:00">Fri 17:00–18:00</p>
+            <p>mgr Krzysztof Kopciowski, 4 Dan</p>
+          </div>
+
+          <div class="card">
+            <div class="tag" data-en="Beginners" data-pl="Początkujący">Beginners</div>
+            <h3>Z1</h3>
+            <p><strong data-en="Youth, students, adults" data-pl="Młodzież, studenci, dorośli">Youth, students, adults</strong></p>
+            <p data-en="Mon 20:00–21:30" data-pl="Pon. 20:00–21:30">Mon 20:00–21:30</p>
+            <p data-en="Tue 20:45–21:45" data-pl="Wt. 20:45–21:45">Tue 20:45–21:45</p>
+            <p>mgr Witold Zurzycki, 3 Dan</p>
+          </div>
+
+          <div class="card">
+            <div class="tag" data-en="Advanced" data-pl="Zaawansowani">Advanced</div>
+            <h3>KZ</h3>
+            <p><strong data-en="Children 13+" data-pl="Dzieci od 13 lat">Children 13+</strong></p>
+            <p data-en="Wed 18:00–19:00" data-pl="Śr. 18:00–19:00">Wed 18:00–19:00</p>
+            <p data-en="Fri 18:00–19:00" data-pl="Pt. 18:00–19:00">Fri 18:00–19:00</p>
+            <p>mgr Krzysztof Kopciowski, 4 Dan</p>
+          </div>
+
+          <div class="card">
+            <div class="tag" data-en="Advanced" data-pl="Zaawansowani">Advanced</div>
+            <h3>ZZ</h3>
+            <p><strong data-en="Youth, students, adults" data-pl="Młodzież, studenci, dorośli">Youth, students, adults</strong></p>
+            <p data-en="Mon 18:30–20:00" data-pl="Pon. 18:30–20:00">Mon 18:30–20:00</p>
+            <p data-en="Tue 19:30–20:15" data-pl="Wt. 19:30–20:15">Tue 19:30–20:15</p>
+            <p>mgr Witold Zurzycki, 3 Dan</p>
+          </div>
+        </div>
+
+        <div class="schedule glass" style="margin-top:18px;">
+          <table>
+            <thead>
+              <tr>
+                <th>Group</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Friday</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>K1</strong>Children 8–13</td>
+                <td>—</td>
+                <td>—</td>
+                <td>17:00–18:00</td>
+                <td>17:00–18:00</td>
+              </tr>
+              <tr>
+                <td><strong>Z1</strong>Youth / Adults</td>
+                <td>20:00–21:30</td>
+                <td>20:45–21:45</td>
+                <td>—</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td><strong>KZ</strong>Children 13+</td>
+                <td>—</td>
+                <td>—</td>
+                <td>18:00–19:00</td>
+                <td>18:00–19:00</td>
+              </tr>
+              <tr>
+                <td><strong>ZZ</strong>Youth / Adults</td>
+                <td>18:30–20:00</td>
+                <td>19:30–20:15</td>
+                <td>—</td>
+                <td>—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- NEWS -->
+      <section id="news" class="screen">
+        <div class="section-head">
+          <h2 data-en="News" data-pl="Aktualności">News</h2>
+          <p data-en="Updates, camps, training information, and events from the Kraków dojo."
+             data-pl="Aktualności, obozy, informacje treningowe i wydarzenia z krakowskiego dojo.">
+            Updates, camps, training information, and events from the Kraków dojo.
+          </p>
+        </div>
+
+        <div class="news-feature glass">
+          <img src="images/k3.jpg" alt="Kyokushin news">
+          <div>
+            <div class="tag" data-en="New season" data-pl="Nowy sezon">New season</div>
+            <h2 data-en="Training schedule 2025/26" data-pl="Rozkład zajęć 2025/26">Training schedule 2025/26</h2>
+            <p data-en="Beginner and advanced groups for children, youth, students, and adults at ul. Smoleńsk 5/7."
+               data-pl="Grupy początkujące i zaawansowane dla dzieci, młodzieży, studentów i dorosłych przy ul. Smoleńsk 5/7.">
+              Beginner and advanced groups for children, youth, students, and adults at ul. Smoleńsk 5/7.
+            </p>
+            <button class="red-btn" onclick="showPage('training')" data-en="See Schedule" data-pl="Zobacz grafik">See Schedule</button>
+          </div>
+        </div>
+
+        <div class="news-grid">
+          <div class="news-card card">
+            <img src="images/k4.jpg" alt="Camp">
+            <div class="news-card-content">
+              <div class="tag" data-en="Camp" data-pl="Obóz">Camp</div>
+              <h3>50 Jubileuszowy Wschodnioeuropejski Obóz Letni KWF</h3>
+              <p data-en="A special Kraków event bringing together the Kyokushin community."
+                 data-pl="Wyjątkowe wydarzenie w Krakowie łączące społeczność Kyokushin.">
+                A special Kraków event bringing together the Kyokushin community.
+              </p>
+            </div>
+          </div>
+
+          <div class="news-card card">
+            <img src="images/k2.jpg" alt="Training">
+            <div class="news-card-content">
+              <div class="tag" data-en="Training" data-pl="Trening">Training</div>
+              <h3 data-en="Join a beginner group" data-pl="Dołącz do grupy początkującej">Join a beginner group</h3>
+              <p data-en="Start training with experienced instructors in the centre of Kraków."
+                 data-pl="Rozpocznij trening z doświadczonymi instruktorami w centrum Krakowa.">
+                Start training with experienced instructors in the centre of Kraków.
+              </p>
+            </div>
+          </div>
+
+          <div class="news-card card">
+            <img src="images/k5.jpg" alt="Dojo">
+            <div class="news-card-content">
+              <div class="tag">Dojo</div>
+              <h3 data-en="Strength, discipline, spirit" data-pl="Siła, dyscyplina, duch">Strength, discipline, spirit</h3>
+              <p data-en="Kyokushin builds body, mind, courage, and character."
+                 data-pl="Kyokushin buduje ciało, umysł, odwagę i charakter.">
+                Kyokushin builds body, mind, courage, and character.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <a class="video-card glass" href="https://www.youtube.com/watch?v=tHjg6HpTNfQ" target="_blank">
+          <div class="video-thumb">
+            <img src="images/k5.jpg" alt="Video thumbnail">
+            <div class="play">▶</div>
+          </div>
+          <div>
+            <div class="tag">Video</div>
+            <h3>50 Jubileuszowy Wschodnioeuropejski Obóz Letni KWF - Kraków 2023</h3>
+            <p data-en="Watch the video on YouTube." data-pl="Zobacz video na YouTube.">Watch the video on YouTube.</p>
+          </div>
+          <div class="red-btn">WATCH</div>
+        </a>
+      </section>
+
+     <!-- GALLERY -->
+<section id="gallery" class="screen gallery-page">
+  <div class="gallery-header">
+    <div>
+      <h1 data-en="Gallery" data-pl="Galeria">Gallery</h1>
+      <p data-en="Moments from our dojo, training, camps, and events."
+         data-pl="Moment z dojo, treningów, obozów i wydarzeń.">
+        Moments from our dojo, training, camps, and events.
+      </p>
+    </div>
+
+    <a href="https://www.instagram.com/krakowskiklubkyokushin/ class="insta-link">
+      Instagram →
+    </a>
+  </div>
+
+  <div class="gallery-block">
+    <div class="gallery-block-head">
+      <h3 data-en="Training & Events" data-pl="Treningi i wydarzenia">Training & Events</h3>
+      <a href="#">VIEW ALL →</a>
+    </div>
+
+    <div class="gallery-grid">
+      <div><img src="images/kyo1.jpg" alt="Kyokushin gallery 1"><span>May 15, 2024</span></div>
+      <div><img src="images/kyo2.jpg" alt="Kyokushin gallery 2"><span>May 15, 2024</span></div>
+      <div><img src="images/kyo3.jpg" alt="Kyokushin gallery 3"><span>May 14, 2024</span></div>
+      <div><img src="images/kyo4.jpg" alt="Kyokushin gallery 4"><span>Apr 28, 2024</span></div>
+      <div><img src="images/kyo5.jpg" alt="Kyokushin gallery 5"><span>Apr 27, 2024</span></div>
+    </div>
+  </div>
+
+  <div class="gallery-block">
+    <div class="gallery-block-head">
+      <h3 data-en="Kyokushin Community" data-pl="Społeczność Kyokushin">Kyokushin Community</h3>
+      <a href="#">VIEW ALL →</a>
+    </div>
+
+    <div class="gallery-grid">
+      <div><img src="images/kyo6.jpg" alt="Kyokushin gallery 6"><span>Apr 28, 2024</span></div>
+      <div><img src="images/kyo7.jpg" alt="Kyokushin gallery 7"><span>Apr 28, 2024</span></div>
+      <div><img src="images/kyo8.jpg" alt="Kyokushin gallery 8"><span>Apr 27, 2024</span></div>
+      <div><img src="images/kyo9.jpg" alt="Kyokushin gallery 9"><span>Apr 27, 2024</span></div>
+      <div><img src="images/kyo10.jpg" alt="Kyokushin gallery 10"><span>Apr 26, 2024</span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div>
+    <h3>CRACOW KYOKUSHIN KARATE</h3>
+    <p>Strength. Discipline. Spirit.</p>
+  </div>
+
+  <div>
+    <h3>Contact</h3>
+    <p>12 634 08 49</p>
+    <p>607 607 535</p>
+    <p>sekretariat@kyokushin.org.pl</p>
+  </div>
+
+  <div>
+    <h3>Location</h3>
+    <p>ul. Smoleńsk 5/7</p>
+    <p>ul. Krowoderska 8</p>
+    <p>Kraków</p>
+    <p>www.krakow.kyokushin.org.pl</p>
+  </div>
+</footer>
+</div>
+
+<script>
+  let lang = "en";
+
+  function showPage(page) {
+    document.querySelectorAll(".screen").forEach(section => {
+      section.classList.remove("active");
+    });
+
+    document.getElementById(page).classList.add("active");
+
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+      btn.classList.remove("active");
+    });
+
+    const activeBtn = document.querySelector(`[data-page="${page}"]`);
+    if (activeBtn) activeBtn.classList.add("active");
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function toggleLang() {
+    lang = lang === "en" ? "pl" : "en";
+
+    document.querySelectorAll("[data-en]").forEach(el => {
+      el.textContent = el.dataset[lang];
+    });
+
+    document.querySelector(".lang").textContent = lang === "en" ? "PL" : "EN";
+  }
+</script>
+</body>
+</html>
